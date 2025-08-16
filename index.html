@@ -2,12 +2,12 @@
 <html lang="en" data-theme="auto">
 <head>
   <meta charset="utf-8" />
-  <title>Ruddro Roy</title>
+  <title>Ruddro Roy - Orbital Mechanics & Network Systems</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Systems for satellite passes, link margins, and network QoS. Reproducible outputs. Transparent methods." />
+  <meta name="description" content="Building tools to understand satellite behavior and network performance. Learning orbital mechanics by implementing it from scratch." />
   <meta name="author" content="Ruddro Roy" />
-  <meta property="og:title" content="Ruddro Roy" />
-  <meta property="og:description" content="Systems for satellite passes, link margins, and network QoS. Reproducible outputs. Transparent methods." />
+  <meta property="og:title" content="Ruddro Roy - Orbital Mechanics & Network Systems" />
+  <meta property="og:description" content="Building tools to understand satellite behavior and network performance. Learning orbital mechanics by implementing it from scratch." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,6 +31,7 @@
     .wrap{max-width:var(--max);margin:0 auto;padding:28px 16px 64px}
     header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 18px;border-bottom:1px solid var(--border)}
     .name{font-weight:800;letter-spacing:.2px;font-size:18px}
+    .tagline{color:var(--muted);font-size:13px;margin-left:8px}
     nav a{color:var(--muted);margin-left:14px;font-weight:600}
     nav a.active, nav a:hover{color:var(--fg)}
     .hero{padding:22px 0 8px}
@@ -55,6 +56,13 @@
     .pill{display:inline-flex;gap:6px;align-items:center}
     .toggle{border:1px solid var(--border);background:var(--card);color:var(--muted);border-radius:10px;padding:8px 10px;cursor:pointer}
     .sr{position:absolute;left:-9999px}
+    .highlight{color:var(--accent);font-weight:600}
+    @media (max-width:600px){
+      .wrap{padding:20px 12px 48px}
+      .t{font-size:24px}
+      nav a{margin-left:10px;font-size:14px}
+      .tagline{display:none}
+    }
   </style>
 </head>
 <body>
@@ -62,11 +70,11 @@
     <header>
       <div class="pill">
         <span class="name">Ruddro Roy</span>
-        <span class="badge">Dhaka to Torino</span>
+        <span class="tagline">I like to think deeply</span>
       </div>
       <nav aria-label="Primary">
-        <a href="#builds" class="active">Builds</a>
-        <a href="#projects">Projects</a>
+        <a href="#current" class="active">Current</a>
+        <a href="#builds">Builds</a>
         <a href="#journey">Journey</a>
         <a href="#links">Links</a>
         <button id="theme" class="toggle" aria-pressed="false" aria-label="Toggle theme">Theme</button>
@@ -74,96 +82,134 @@
     </header>
 
     <section class="hero" id="top">
-      <div class="t">Systems for space and networks.</div>
+      <div class="t">Building tools to understand how satellites move and networks behave.</div>
       <p class="sub">
-        Focus on reliable outputs and transparent methods. Frames and epochs shown. Everything reproducible.
+        I implement orbital mechanics from first principles. When I see 0.04km error where I expect 2km, I investigate why. Currently exploring how atmospheric drag uncertainty affects satellite predictions.
       </p>
       <div class="cta">
-        <a class="btn" href="#builds">See builds</a>
+        <a class="btn" href="https://github.com/ruddro-roy/SGP4-experiment" target="_blank" rel="noopener">SGP4 Research</a>
+        <a class="btn secondary" href="https://github.com/ruddro-roy/satlink-planner" target="_blank" rel="noopener">Satlink Planner</a>
         <a class="btn secondary" href="https://github.com/ruddro-roy" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn secondary" href="https://x.com/royrdro" target="_blank" rel="noopener">X</a>
       </div>
+    </section>
+
+    <section id="current" aria-labelledby="current-h">
+      <h2 id="current-h">What I'm discovering right now</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>B* drag coefficient affects orbital decay linearly</h3>
+          <p>
+            Built my own orbital propagator to understand SGP4 deeply. Found that 50% uncertainty in atmospheric drag means 50% uncertainty in decay rate. This matters because during solar storms, we often don't know drag within 20%.
+          </p>
+          <p class="meta">
+            <span class="badge">Kepler solver</span>
+            <span class="badge">TEME to ECEF</span>
+            <span class="badge">Python</span>
+          </p>
+        </article>
+      </div>
+      <p class="note">I question everything. If results look wrong, I dig until I understand why.</p>
     </section>
 
     <section id="builds" aria-labelledby="builds-h">
-      <h2 id="builds-h">Builds</h2>
+      <h2 id="builds-h">What I'm building</h2>
       <div class="grid cols-2">
         <article class="card">
-          <h3>LEO pass planner and link margin</h3>
-          <p>Input a TLE and a ground site. Get pass times and a margin timeline using FSPL with ITU gaseous and rain loss options. Badges show <span class="badge">frame TEME</span> and <span class="badge">TLE epoch</span>.</p>
-          <p class="meta">Status: in progress. Stack: FastAPI, sgp4, astropy, React.</p>
+          <h3>Orbital mechanics from scratch</h3>
+          <p>
+            Implementing SGP4 propagation myself to truly understand it. Not just calling libraries but solving Kepler's equation, converting coordinate frames, and quantifying uncertainty.
+          </p>
+          <p class="meta">Status: Testing against real ISS data</p>
           <ul class="list">
-            <li>Endpoints: <span class="mono">/passes</span>, <span class="mono">/margin</span>, <span class="mono">/export/ics</span></li>
-            <li>Target accuracy: rise, max, set within 2 s vs reference</li>
-            <li>Exports: ICS, CSV, PDF summary</li>
+            <li>Built: Newton-Raphson solver for eccentric anomaly</li>
+            <li>Working on: Comparing with published decay rates</li>
+            <li>Next: State transition matrix for covariance</li>
           </ul>
         </article>
 
         <article class="card">
-          <h3>Latency under load probe</h3>
-          <p>Measures latency, jitter, loss, and short outages at set offered loads. Works with Starlink or any ISP. Produces charts and CSV.</p>
-          <p class="meta">Status: in progress. Stack: Python agent, FastAPI, React.</p>
+          <h3>Pass predictor with link budgets</h3>
+          <p>
+            Tells you not just when a satellite passes overhead, but how well you can communicate with it. Combines orbital mechanics with RF propagation.
+          </p>
+          <p class="meta">Status: Core math works, building UI</p>
           <ul class="list">
-            <li>Stages: idle, 10 percent, 50 percent, 80 percent</li>
-            <li>Detections: micro outages of at least 1 s, availability</li>
-            <li>Outputs: dashboard, CSV export</li>
+            <li>Calculates Doppler shift at each point</li>
+            <li>Includes atmospheric and rain losses</li>
+            <li>Exports to calendar and PDF</li>
           </ul>
         </article>
-      </div>
-      <p class="note">Local first. Then deploy. No client secrets.</p>
-    </section>
 
-    <section id="projects" aria-labelledby="proj-h">
-      <h2 id="proj-h">Previous and ongoing</h2>
-      <div class="grid">
         <article class="card">
-          <h3>Starlink tracker</h3>
-          <p>Cesium viewer with click to track, dropdown search, and overhead mode. Lessons learned: use primitives for scale, keep UI simple, batch SGP4.</p>
-          <p class="meta">Focus stays on usability and clear labels.</p>
+          <h3>Network quality under load</h3>
+          <p>
+            Measures how your internet (especially Starlink) performs when stressed. Detects micro-outages that speed tests miss.
+          </p>
+          <p class="meta">Status: Protocol design phase</p>
+          <ul class="list">
+            <li>Tests at 10%, 50%, 80% capacity</li>
+            <li>Finds outages as short as 1 second</li>
+            <li>No cloud needed, runs locally</li>
+          </ul>
         </article>
 
         <article class="card">
-          <h3>Method notes</h3>
-          <p>Short write ups while building:</p>
+          <h3>3D satellite tracker</h3>
+          <p>
+            My first real project. Tracks thousands of satellites in browser using Cesium. Taught me about performance limits and coordinate systems.
+          </p>
+          <p class="meta">Status: Works but needs optimization</p>
           <ul class="list">
-            <li>Frames and time for SGP4</li>
-            <li>FSPL with ITU losses</li>
-            <li>Latency under load and event rules</li>
+            <li>Learned: Don't render 5000 objects at once</li>
+            <li>Solution: Level-of-detail based on zoom</li>
+            <li>Lesson: Start simple, optimize later</li>
           </ul>
         </article>
       </div>
     </section>
 
     <section id="journey" aria-labelledby="journey-h">
-      <h2 id="journey-h">Journey</h2>
+      <h2 id="journey-h">My journey</h2>
       <div class="grid">
         <article class="card">
           <p>
-            EEE graduate from Bangladesh. Got into space systems through NASA online events and GLOBE projects with Aqua and Terra. Self taught with public resources. I learn by building and explaining.
-            Admitted to MSc in Communications Engineering at Politecnico di Torino for 2025 to 2027. I am building tools I want to use. Transparent. Reproducible. Useful for operators and students.
+            <span class="highlight">From Dhaka to space, via code.</span> EEE graduate from Bangladesh, building from my room. Started with NASA's online events and GLOBE projects tracking Aqua and Terra satellites. 
+          </p>
+          <p>
+            Everything I know about orbital mechanics comes from implementing it. When textbooks said "use SGP4," I built SGP4. When papers mentioned B* uncertainty, I quantified it myself.
+          </p>
+          <p>
+            Starting MSc in Communications Engineering at Politecnico di Torino in 2025. Until then, I'm building tools that I wish existed when I started learning.
+          </p>
+          <p class="meta">
+            Philosophy: Make hard things understandable. Show your work. Question surprising results.
           </p>
         </article>
       </div>
     </section>
 
     <section id="links" aria-labelledby="links-h">
-      <h2 id="links-h">Links</h2>
+      <h2 id="links-h">Find me</h2>
       <div class="grid cols-2">
         <div class="card">
-          <h3>Profiles</h3>
+          <h3>Code and writing</h3>
           <ul class="list">
-            <li><a href="https://github.com/ruddro-roy" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a href="https://x.com/royrdro" target="_blank" rel="noopener">X</a></li>
+            <li><a href="https://github.com/ruddro-roy" target="_blank" rel="noopener">GitHub</a> - All my experiments</li>
+            <li><a href="https://x.com/royrdro" target="_blank" rel="noopener">X (Twitter)</a> - Updates and thoughts</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Contact</h3>
-          <p class="meta">DM on X or open a GitHub issue.</p>
+          <h3>Let's talk</h3>
+          <p>
+            Open to opportunities in orbital mechanics, satellite operations, or network analysis. Especially interested in startups that let me build and learn.
+          </p>
+          <p class="meta">DM on X or open a GitHub issue</p>
         </div>
       </div>
     </section>
 
     <footer>
+      <p class="note">Building from Bangladesh. Moving to Italy. Thinking about space.</p>
       <p class="note">© <span id="y"></span> Ruddro Roy</p>
     </footer>
   </div>
@@ -172,22 +218,15 @@
     // year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // theme toggle with data-theme
+    // theme toggle
     const root = document.documentElement;
     const btn = document.getElementById('theme');
-
-    // decide initial theme
-    const stored = localStorage.getItem('theme'); // "light" or "dark" or null
+    const stored = localStorage.getItem('theme');
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     function applyTheme(mode){
-      // mode = "light" | "dark"
       root.setAttribute('data-theme', mode);
       btn.setAttribute('aria-pressed', String(mode === 'dark'));
-    }
-
-    function currentTheme(){
-      return root.getAttribute('data-theme');
     }
 
     if(stored === 'light' || stored === 'dark'){
@@ -197,7 +236,8 @@
     }
 
     btn.addEventListener('click', () => {
-      const next = currentTheme() === 'dark' ? 'light' : 'dark';
+      const current = root.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
       localStorage.setItem('theme', next);
       applyTheme(next);
     });
