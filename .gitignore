@@ -1,0 +1,87 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE and Editor folders
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.nova/
+
+# Dependencies (if you add any later)
+node_modules/
+bower_components/
+
+# Build files (if you add build process later)
+dist/
+build/
+*.min.js
+*.min.css
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment variables (NEVER commit these!)
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Private/Sensitive files
+private/
+secrets/
+config.json
+credentials.json
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Backup files
+*.backup
+*.bak
+*.tmp
+*.temp
+*~
+
+# Personal notes (if you keep any)
+notes.txt
+todo.txt
+personal-notes/
+
+# Test files
+test/
+tests/
+*.test.js
+
+# Documentation drafts
+drafts/
+*.draft.md
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Database files (if any)
+*.sql
+*.sqlite
+*.db
+
+# Cache
+.cache/
+.parcel-cache/
+
+# If you later add package managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
